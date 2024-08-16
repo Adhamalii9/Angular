@@ -1,0 +1,36 @@
+<div class="bg-light p-5">
+<div class="container">
+
+<input [(ngModel)]="studentName" class="form-control mt-3" type="text" name="name" placeholder="Enter Student name" required>
+<div *ngIf="isSubmitted && !studentName">
+    <p style="color: red;">Student Name is Required</p>
+  </div>
+
+<input [(ngModel)]="studentAge" class="form-control mt-3" type="text" name="age" placeholder="Enter Student age">
+<div *ngIf="isSubmitted && !studentAge">
+    <p style="color: red;">Age Name is Required</p>
+  </div>
+
+<button class="btn btn-success mt-5" (click)="addStudent()"> Add Student</button>
+
+<table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.age}}</td>
+          <td><button (click)="removeStudent(student.id)">Delete Student</button></td>
+        </tr>
+      </tbody>
+  </table>
+
+</div>
+</div>

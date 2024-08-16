@@ -1,0 +1,25 @@
+<div class="bg-light p-5">
+    <div class="container row d-flex justify-content-center">
+      <div class="card col- p-4 mt-2 m-5" *ngFor="let product of products" style="width: 18rem;">
+        <img class="card-img-top" [src]="product.img" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <p class="card-text">Price: {{product.price}}</p>
+          <p *ngIf="product.quantity === 0" style="color: rgb(255, 2, 2);">No Products Available</p>
+          <p *ngIf="product.quantity === 1" style="color: rgb(0, 0, 0);">Only one product available</p>
+          <p *ngIf="product.quantity > 1" style="color: rgb(0, 0, 0);">Quantity: {{product.quantity}}</p>
+          <hr>
+          <button 
+            [ngClass]="{
+              'btn-danger': product.quantity === 0,
+              'btn-warning': product.quantity === 1,
+              'btn-success': product.quantity > 1
+            }" 
+            class="btn ">
+            {{ product.quantity === 0 ? 'Sold Out' : 'Buy Now' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <h2 class="text-center">ITI Tracks</h2>
+    
+    <div class="form-group mt-4">
+      <label for="trackSelect">Select your track</label>
+      <select id="trackSelect" class="form-control" (change)="onSelectTrack($event)">
+        <option value="" disabled selected>Select your track</option>
+        <option *ngFor="let track of tracks" [value]="track.name">{{ track.name }}</option>
+      </select>
+    </div>
+    
+    <div class="mt-3">
+      <p *ngIf="selectedTrack">
+        <span *ngIf="selectedTrack.places.length > 0">
+          {{ selectedTrack?.name }}is available in: 
+          <span *ngFor="let place of selectedTrack.places; let last = last">
+            <strong>{{ place }}</strong><span *ngIf="!last">, </span>
+          </span>
+        </span>
+        <span *ngIf="selectedTrack.places.length === 0">
+          {{ selectedTrack?.name }} isn't available.
+        </span>
+      </p>
+    </div>
+  </div>
+  
